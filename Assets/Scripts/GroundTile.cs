@@ -42,8 +42,9 @@ public class GroundTile : MonoBehaviour
         int spawnAmount = 1;
         for (int i = 0; i < spawnAmount; i++)
         {
-            GameObject coin = Instantiate(coinPrefab, transform);
+            GameObject coin = Instantiate(coinPrefab);
             coin.transform.position = spawnrandomPoint(GetComponent<Collider>());
+
 
         }
     }

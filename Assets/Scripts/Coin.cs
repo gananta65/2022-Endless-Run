@@ -18,19 +18,18 @@ public class Coin : MonoBehaviour
         transform.Rotate(0, 0, turnSpeed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("Obstacle"))
     {
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            //destroy the coin when it collides with an obstacle
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            //destroy the coin when it collides with a player
-            Destroy(gameObject);
-            //add score to the game manager
-            GameManager.MyInstance.score += 1;
-        }
+        Destroy(gameObject);
     }
+
+    if (other.CompareTag("Player"))
+    {
+        Destroy(gameObject);
+        GameManager.MyInstance.score += 1;
+    }
+}
+
 }
